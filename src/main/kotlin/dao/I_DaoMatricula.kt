@@ -1,9 +1,12 @@
-package org.example.service
+package org.example.dao
 
+import org.example.exceptions.GlobalException
+import org.example.exceptions.NoDataException
 import org.example.model.*
-import java.sql.ResultSet
+import java.sql.*
+import kotlin.jvm.Throws
 
-interface I_Service {
+interface I_DaoMatricula {
 
     // ----------------- CRUD para Carrera -----------------
 

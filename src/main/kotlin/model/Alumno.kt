@@ -7,7 +7,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "ALUMNO")
+@Table(name = "ALUMNO", schema = "MOVILES")
 class Alumno {
     @Id
     @Column(name = "CEDULA", length = 20, nullable = false)
@@ -86,44 +86,6 @@ class Alumno {
 
     fun setCodigoCarrera(codigoCarrera: String) {
         this.codigoCarrera = codigoCarrera
-    }
-
-    // Métodos adicionales
-
-    /**
-     * Calcula la edad del alumno
-     * @return Edad en años
-     */
-    fun calcularEdad(): Int {
-        val hoy = Date()
-        val diff = hoy.time - fechaNacimiento.time
-        return (diff / (1000L * 60 * 60 * 24 * 365)).toInt()
-    }
-
-    /**
-     * Verifica si el alumno pertenece a una carrera específica
-     * @param codigo El código de carrera a verificar
-     * @return true si coincide, false en caso contrario
-     */
-    fun perteneceACarrera(codigo: String): Boolean {
-        return this.codigoCarrera == codigo
-    }
-
-    /**
-     * Valida que los datos del alumno sean correctos
-     * @return true si los datos son válidos, false en caso contrario
-     */
-    fun validarDatos(): Boolean {
-        return cedula.isNotEmpty() && nombre.isNotEmpty() &&
-                email.isNotEmpty() && codigoCarrera.isNotEmpty()
-    }
-
-    /**
-     * Obtiene información de contacto completa
-     * @return String con la información de contacto
-     */
-    fun obtenerContacto(): String {
-        return "Nombre: $nombre, Email: $email, Teléfono: ${telefono ?: "No disponible"}"
     }
 
     // toString

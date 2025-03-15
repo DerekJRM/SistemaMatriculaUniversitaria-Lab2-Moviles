@@ -4,7 +4,7 @@ import java.math.BigDecimal
 import javax.persistence.*
 
 @Entity
-@Table(name = "MATRICULA")
+@Table(name = "MATRICULA", schema = "MOVILES")
 class Matricula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,56 +93,6 @@ class Matricula {
     fun setNota(nota: BigDecimal?) {
         this.nota = nota
     }
-
-//    // Métodos adicionales
-//
-//    /**
-//     * Verifica si la matrícula ya tiene una nota asignada
-//     * @return true si tiene nota, false en caso contrario
-//     */
-//    fun tieneNota(): Boolean {
-//        return nota != null
-//    }
-//
-//    /**
-//     * Verifica si el alumno aprobó el curso (nota >= 70)
-//     * @return true si aprobó, false si no aprobó o no tiene nota
-//     */
-//    fun estaAprobado(): Boolean {
-//        return nota?.compareTo(BigDecimal("70")) != null &&
-//                nota?.compareTo(BigDecimal("70")) != null &&
-//                nota?.compareTo(BigDecimal("70"))!! >= 0
-//    }
-//
-//    /**
-//     * Calcula el estado de la matrícula basado en la nota
-//     * @return String con el estado (Aprobado, Reprobado, Sin Evaluar)
-//     */
-//    fun calcularEstado(): String {
-//        if (nota == null) {
-//            return "Sin Evaluar"
-//        }
-//
-//        return if (estaAprobado()) "Aprobado" else "Reprobado"
-//    }
-//
-//    /**
-//     * Genera un identificador único para la matrícula
-//     * @return String con el identificador único
-//     */
-//    fun generarIdentificadorUnico(): String {
-//        return "$anioCiclo-$numeroCiclo-$codigoCurso-$numeroGrupo-$cedulaAlumno"
-//    }
-//
-//    /**
-//     * Valida que los datos de la matrícula sean correctos
-//     * @return true si los datos son válidos, false en caso contrario
-//     */
-//    fun validarDatos(): Boolean {
-//        return anioCiclo > 0 && (numeroCiclo == 1 || numeroCiclo == 2) &&
-//                codigoCurso.isNotEmpty() && numeroGrupo > 0 &&
-//                cedulaAlumno.isNotEmpty()
-//    }
 
     // toString
     override fun toString(): String {

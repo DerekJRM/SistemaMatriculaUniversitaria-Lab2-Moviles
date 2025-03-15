@@ -6,7 +6,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "CURSO")
+@Table(name = "CURSO", schema = "MOVILES")
 class Curso {
     @Id
     @Column(name = "CODIGO_CURSO", length = 20, nullable = false)
@@ -61,33 +61,6 @@ class Curso {
 
     fun setHorasSemanales(horasSemanales: Int) {
         this.horasSemanales = horasSemanales
-    }
-
-    // Métodos adicionales
-
-    /**
-     * Calcula el costo del curso basado en los créditos
-     * @param costoPorCredito El costo por cada crédito
-     * @return El costo total del curso
-     */
-    fun calcularCosto(costoPorCredito: Double): Double {
-        return creditos * costoPorCredito
-    }
-
-    /**
-     * Valida que los datos del curso sean correctos
-     * @return true si los datos son válidos, false en caso contrario
-     */
-    fun validarDatos(): Boolean {
-        return codigoCurso.isNotEmpty() && nombre.isNotEmpty() && creditos > 0 && horasSemanales > 0
-    }
-
-    /**
-     * Verifica si el curso es de alta carga horaria
-     * @return true si tiene más de 5 horas semanales, false en caso contrario
-     */
-    fun esAltaCargaHoraria(): Boolean {
-        return horasSemanales > 5
     }
 
     // toString

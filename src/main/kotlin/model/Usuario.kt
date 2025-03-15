@@ -6,7 +6,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "USUARIO")
+@Table(name = "USUARIO", schema = "MOVILES")
 class Usuario {
     @Id
     @Column(name = "CEDULA", length = 20, nullable = false)
@@ -64,76 +64,6 @@ class Usuario {
             throw IllegalArgumentException("Tipo de usuario no válido")
         }
     }
-
-//    // Métodos adicionales
-//
-//    /**
-//     * Verifica si las credenciales proporcionadas son correctas
-//     * @param cedulaInput La cédula a verificar
-//     * @param claveInput La clave a verificar
-//     * @return true si las credenciales son correctas, false en caso contrario
-//     */
-//    fun verificarCredenciales(cedulaInput: String, claveInput: String): Boolean {
-//        return this.cedula == cedulaInput && this.clave == claveInput
-//    }
-//
-//    /**
-//     * Verifica si el usuario es administrador
-//     * @return true si es administrador, false en caso contrario
-//     */
-//    fun esAdministrador(): Boolean {
-//        return tipoUsuario == TIPO_ADMINISTRADOR
-//    }
-//
-//    /**
-//     * Verifica si el usuario es matriculador
-//     * @return true si es matriculador, false en caso contrario
-//     */
-//    fun esMatriculador(): Boolean {
-//        return tipoUsuario == TIPO_MATRICULADOR
-//    }
-//
-//    /**
-//     * Verifica si el usuario es profesor
-//     * @return true si es profesor, false en caso contrario
-//     */
-//    fun esProfesor(): Boolean {
-//        return tipoUsuario == TIPO_PROFESOR
-//    }
-//
-//    /**
-//     * Verifica si el usuario es alumno
-//     * @return true si es alumno, false en caso contrario
-//     */
-//    fun esAlumno(): Boolean {
-//        return tipoUsuario == TIPO_ALUMNO
-//    }
-//
-//    /**
-//     * Cambia la contraseña del usuario
-//     * @param claveActual La clave actual para verificación
-//     * @param claveNueva La nueva clave a establecer
-//     * @return true si el cambio fue exitoso, false si la clave actual es incorrecta
-//     */
-//    fun cambiarClave(claveActual: String, claveNueva: String): Boolean {
-//        if (this.clave == claveActual) {
-//            this.clave = claveNueva
-//            return true
-//        }
-//        return false
-//    }
-//
-//    /**
-//     * Valida que los datos del usuario sean correctos
-//     * @return true si los datos son válidos, false en caso contrario
-//     */
-//    fun validarDatos(): Boolean {
-//        return cedula.isNotEmpty() && clave.isNotEmpty() &&
-//                (tipoUsuario == TIPO_ADMINISTRADOR ||
-//                        tipoUsuario == TIPO_MATRICULADOR ||
-//                        tipoUsuario == TIPO_PROFESOR ||
-//                        tipoUsuario == TIPO_ALUMNO)
-//    }
 
     // toString
     override fun toString(): String {

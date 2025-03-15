@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/SqlScripts/CreacionTablas.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/SqlScripts/1-CreacionUsuario.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/SqlScripts/2-CreacionTablas.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/SqlScripts/3-CreacionPrcedimientos.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/src/main/kotlin/dao/DaoMatricula.kt" dialect="Oracle" />
   </component>
 </project>

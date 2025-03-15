@@ -4,7 +4,7 @@ import java.util.Date
 import javax.persistence.*
 
 @Entity
-@Table(name = "CICLO")
+@Table(name = "CICLO", schema = "MOVILES")
 class Ciclo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,40 +89,6 @@ class Ciclo {
     fun setActivo(activo: Boolean) {
         this.activo = activo
     }
-
-//    // Métodos adicionales
-//
-//    /**
-//     * Calcula la duración del ciclo en días
-//     * @return Número de días que dura el ciclo
-//     */
-//    fun calcularDuracion(): Long {
-//        val diffInMilis = fechaFin.time - fechaInicio.time
-//        return diffInMilis / (1000 * 60 * 60 * 24)
-//    }
-//
-//    /**
-//     * Verifica si una fecha está dentro del período del ciclo
-//     * @param fecha La fecha a verificar
-//     * @return true si la fecha está en el período, false en caso contrario
-//     */
-//    fun fechaEnPeriodo(fecha: Date): Boolean {
-//        return fecha.after(fechaInicio) && fecha.before(fechaFin)
-//    }
-//
-//    /**
-//     * Activa el ciclo actual
-//     */
-//    fun activarCiclo() {
-//        this.activo = true
-//    }
-//
-//    /**
-//     * Desactiva el ciclo actual
-//     */
-//    fun desactivarCiclo() {
-//        this.activo = false
-//    }
 
     // toString
     override fun toString(): String {

@@ -1,317 +1,432 @@
 package org.example.service
 
-import org.example.Dao.Dao
-import java.sql.ResultSet
+import org.example.dao.DaoMatricula
+import org.example.dao.I_DaoMatricula
+import org.example.model.*
 
 class Service : I_Service {
 
-    private val dao = Dao()
+    private val dao: I_DaoMatricula = DaoMatricula()
 
     // ----------------- CRUD para Carrera -----------------
 
-    override fun insertarCarrera(codigo: String, nombre: String, titulo: String) {
+    override fun insertarCarrera(carrera: Carrera) {
         try {
-            dao.insertarCarrera(codigo, nombre, titulo)
-            println("Carrera insertada correctamente")
+            dao.insertarCarrera(carrera)
         } catch (e: Exception) {
-            println("Error al insertar carrera: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerCarreraPorCodigo(codigo: String): ResultSet? {
-        return try {
-            dao.obtenerCarreraPorCodigo(codigo)
+    override fun obtenerCarreras(): Collection<Carrera> {
+        try {
+            return dao.obtenerCarreras()
         } catch (e: Exception) {
-            println("Error al obtener carrera: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarCarrera(codigo: String, nombre: String, titulo: String) {
+    override fun actualizarCarrera(carrera: Carrera) {
         try {
-            dao.actualizarCarrera(codigo, nombre, titulo)
-            println("Carrera actualizada correctamente")
+            dao.actualizarCarrera(carrera)
         } catch (e: Exception) {
-            println("Error al actualizar carrera: ${e.message}")
+            throw e
         }
     }
 
     override fun eliminarCarrera(codigo: String) {
         try {
             dao.eliminarCarrera(codigo)
-            println("Carrera eliminada correctamente")
         } catch (e: Exception) {
-            println("Error al eliminar carrera: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerCarreraPorCodigo(codigo: String): Carrera? {
+        try {
+            return dao.obtenerCarreraPorCodigo(codigo)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerCarreraPorNombre(nombre: String): Collection<Carrera> {
+        try {
+            return dao.obtenerCarreraPorNombre(nombre)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- CRUD para Curso -----------------
 
-    override fun insertarCurso(codigo: String, nombre: String, creditos: Int, horas: Int) {
+    override fun insertarCurso(curso: Curso) {
         try {
-            dao.insertarCurso(codigo, nombre, creditos, horas)
-            println("Curso insertado correctamente")
+            dao.insertarCurso(curso)
         } catch (e: Exception) {
-            println("Error al insertar curso: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerCursoPorCodigo(codigo: String): ResultSet? {
-        return try {
-            dao.obtenerCursoPorCodigo(codigo)
+    override fun obtenerCursos(): Collection<Curso> {
+        try {
+            return dao.obtenerCursos()
         } catch (e: Exception) {
-            println("Error al obtener curso: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarCurso(codigo: String, nombre: String, creditos: Int, horas: Int) {
+    override fun actualizarCurso(curso: Curso) {
         try {
-            dao.actualizarCurso(codigo, nombre, creditos, horas)
-            println("Curso actualizado correctamente")
+            dao.actualizarCurso(curso)
         } catch (e: Exception) {
-            println("Error al actualizar curso: ${e.message}")
+            throw e
         }
     }
 
     override fun eliminarCurso(codigo: String) {
         try {
             dao.eliminarCurso(codigo)
-            println("Curso eliminado correctamente")
         } catch (e: Exception) {
-            println("Error al eliminar curso: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerCursoPorCodigo(codigo: String): Curso? {
+        try {
+            return dao.obtenerCursoPorCodigo(codigo)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerCursosPorCarrera(codigoCarrera: String): Collection<Curso> {
+        try {
+            return dao.obtenerCursosPorCarrera(codigoCarrera)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerCursosPorNombre(nombre: String): Collection<Curso> {
+        try {
+            return dao.obtenerCursosPorNombre(nombre)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    // ----------------- CRUD para Carrera_Curso -----------------
+
+    override fun insertarCarreraCurso(carreraCurso: CarreraCurso) {
+        try {
+            dao.insertarCarreraCurso(carreraCurso)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerCarrerasCursos(): Collection<CarreraCurso> {
+        try {
+            return dao.obtenerCarrerasCursos()
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun actualizarCarreraCurso(carreraCurso: CarreraCurso) {
+        try {
+            dao.actualizarCarreraCurso(carreraCurso)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun eliminarCarreraCurso(carreraCursoId: Int) {
+        try {
+            dao.eliminarCarreraCurso(carreraCursoId)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerCarreraCursoPorId(carreraCursoId: Int): CarreraCurso? {
+        try {
+            return dao.obtenerCarreraCursoPorId(carreraCursoId)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- CRUD para Profesor -----------------
 
-    override fun insertarProfesor(cedula: String, nombre: String, telefono: String, email: String) {
+    override fun insertarProfesor(profesor: Profesor) {
         try {
-            dao.insertarProfesor(cedula, nombre, telefono, email)
-            println("Profesor insertado correctamente")
+            dao.insertarProfesor(profesor)
         } catch (e: Exception) {
-            println("Error al insertar profesor: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerProfesorPorCedula(cedula: String): ResultSet? {
-        return try {
-            dao.obtenerProfesorPorCedula(cedula)
+    override fun obtenerProfesores(): Collection<Profesor> {
+        try {
+            return dao.obtenerProfesores()
         } catch (e: Exception) {
-            println("Error al obtener profesor: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarProfesor(cedula: String, nombre: String, telefono: String, email: String) {
+    override fun actualizarProfesor(profesor: Profesor) {
         try {
-            dao.actualizarProfesor(cedula, nombre, telefono, email)
-            println("Profesor actualizado correctamente")
+            dao.actualizarProfesor(profesor)
         } catch (e: Exception) {
-            println("Error al actualizar profesor: ${e.message}")
+            throw e
         }
     }
 
     override fun eliminarProfesor(cedula: String) {
         try {
             dao.eliminarProfesor(cedula)
-            println("Profesor eliminado correctamente")
         } catch (e: Exception) {
-            println("Error al eliminar profesor: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerProfesorPorCedula(cedula: String): Profesor? {
+        try {
+            return dao.obtenerProfesorPorCedula(cedula)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerProfesorPorNombre(nombre: String): Collection<Profesor> {
+        try {
+            return dao.obtenerProfesorPorNombre(nombre)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- CRUD para Alumno -----------------
 
-    override fun insertarAlumno(cedula: String, nombre: String, telefono: String, email: String, fechaNacimiento: String, carrera: String) {
+    override fun insertarAlumno(alumno: Alumno) {
         try {
-            dao.insertarAlumno(cedula, nombre, telefono, email, fechaNacimiento, carrera)
-            println("Alumno insertado correctamente")
+            dao.insertarAlumno(alumno)
         } catch (e: Exception) {
-            println("Error al insertar alumno: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerAlumnoPorCedula(cedula: String): ResultSet? {
-        return try {
-            dao.obtenerAlumnoPorCedula(cedula)
+    override fun obtenerAlumnos(): Collection<Alumno> {
+        try {
+            return dao.obtenerAlumnos()
         } catch (e: Exception) {
-            println("Error al obtener alumno: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarAlumno(cedula: String, nombre: String, telefono: String, email: String, fechaNacimiento: String, carrera: String) {
+    override fun actualizarAlumno(alumno: Alumno) {
         try {
-            dao.actualizarAlumno(cedula, nombre, telefono, email, fechaNacimiento, carrera)
-            println("Alumno actualizado correctamente")
+            dao.actualizarAlumno(alumno)
         } catch (e: Exception) {
-            println("Error al actualizar alumno: ${e.message}")
+            throw e
         }
     }
 
     override fun eliminarAlumno(cedula: String) {
         try {
             dao.eliminarAlumno(cedula)
-            println("Alumno eliminado correctamente")
         } catch (e: Exception) {
-            println("Error al eliminar alumno: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerAlumnoPorCedula(cedula: String): Alumno? {
+        try {
+            return dao.obtenerAlumnoPorCedula(cedula)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerAlumnoPorNombre(nombre: String): Collection<Alumno> {
+        try {
+            return dao.obtenerAlumnoPorNombre(nombre)
+        } catch (e: Exception) {
+            throw e
+        }
+    }
+
+    override fun obtenerAlumnosPorCarrera(codigoCarrera: String): Collection<Alumno> {
+        try {
+            return dao.obtenerAlumnosPorCarrera(codigoCarrera)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- CRUD para Ciclo -----------------
 
-    override fun insertarCiclo(anio: Int, numero: Int, fechaInicio: String, fechaFin: String) {
+    override fun insertarCiclo(ciclo: Ciclo) {
         try {
-            dao.insertarCiclo(anio, numero, fechaInicio, fechaFin)
-            println("Ciclo insertado correctamente")
+            dao.insertarCiclo(ciclo)
         } catch (e: Exception) {
-            println("Error al insertar ciclo: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerCicloPorAnio(anio: Int): ResultSet? {
-        return try {
-            dao.obtenerCicloPorAnio(anio)
+    override fun obtenerCiclos(): Collection<Ciclo> {
+        try {
+            return dao.obtenerCiclos()
         } catch (e: Exception) {
-            println("Error al obtener ciclo: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarCiclo(anio: Int, numero: Int, fechaInicio: String, fechaFin: String) {
+    override fun actualizarCiclo(ciclo: Ciclo) {
         try {
-            dao.actualizarCiclo(anio, numero, fechaInicio, fechaFin)
-            println("Ciclo actualizado correctamente")
+            dao.actualizarCiclo(ciclo)
         } catch (e: Exception) {
-            println("Error al actualizar ciclo: ${e.message}")
+            throw e
         }
     }
 
-    override fun eliminarCiclo(anio: Int, numero: Int) {
+    override fun eliminarCiclo(cicloId: Int) {
         try {
-            dao.eliminarCiclo(anio, numero)
-            println("Ciclo eliminado correctamente")
+            dao.eliminarCiclo(cicloId)
         } catch (e: Exception) {
-            println("Error al eliminar ciclo: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerCicloPorAnio(anio: Int): Collection<Ciclo> {
+        try {
+            return dao.obtenerCicloPorAnio(anio)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- CRUD para Grupo -----------------
 
-    override fun insertarGrupo(cicloId: Int, cursoId: String, numero: Int, horario: String, profesorId: String) {
+    override fun insertarGrupo(grupo: Grupo) {
         try {
-            dao.insertarGrupo(cicloId, cursoId, numero, horario, profesorId)
-            println("Grupo insertado correctamente")
+            dao.insertarGrupo(grupo)
         } catch (e: Exception) {
-            println("Error al insertar grupo: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerGrupoPorId(id: Int): ResultSet? {
-        return try {
-            dao.obtenerGrupoPorId(id)
+    override fun obtenerGrupos(): Collection<Grupo> {
+        try {
+            return dao.obtenerGrupos()
         } catch (e: Exception) {
-            println("Error al obtener grupo: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarGrupo(id: Int, horario: String, profesorId: String) {
+    override fun actualizarGrupo(grupo: Grupo) {
         try {
-            dao.actualizarGrupo(id, horario, profesorId)
-            println("Grupo actualizado correctamente")
+            dao.actualizarGrupo(grupo)
         } catch (e: Exception) {
-            println("Error al actualizar grupo: ${e.message}")
+            throw e
         }
     }
 
-    override fun eliminarGrupo(id: Int) {
+    override fun eliminarGrupo(grupoId: Int) {
         try {
-            dao.eliminarGrupo(id)
-            println("Grupo eliminado correctamente")
+            dao.eliminarGrupo(grupoId)
         } catch (e: Exception) {
-            println("Error al eliminar grupo: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerGrupoPorId(grupoId: Int): Grupo? {
+        try {
+            return dao.obtenerGrupoPorId(grupoId)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- CRUD para Usuario -----------------
 
-    override fun insertarUsuario(cedula: String, clave: String, rol: String) {
+    override fun insertarUsuario(usuario: Usuario) {
         try {
-            dao.insertarUsuario(cedula, clave, rol)
-            println("Usuario insertado correctamente")
+            dao.insertarUsuario(usuario)
         } catch (e: Exception) {
-            println("Error al insertar usuario: ${e.message}")
+            throw e
         }
     }
 
-    override fun obtenerUsuarioPorCedula(cedula: String): ResultSet? {
-        return try {
-            dao.obtenerUsuarioPorCedula(cedula)
+    override fun obtenerUsuarios(): Collection<Usuario> {
+        try {
+            return dao.obtenerUsuarios()
         } catch (e: Exception) {
-            println("Error al obtener usuario: ${e.message}")
-            null
+            throw e
         }
     }
 
-    override fun actualizarUsuario(cedula: String, clave: String, rol: String) {
+    override fun actualizarUsuario(usuario: Usuario) {
         try {
-            dao.actualizarUsuario(cedula, clave, rol)
-            println("Usuario actualizado correctamente")
+            dao.actualizarUsuario(usuario)
         } catch (e: Exception) {
-            println("Error al actualizar usuario: ${e.message}")
+            throw e
         }
     }
 
     override fun eliminarUsuario(cedula: String) {
         try {
             dao.eliminarUsuario(cedula)
-            println("Usuario eliminado correctamente")
         } catch (e: Exception) {
-            println("Error al eliminar usuario: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun obtenerUsuarioPorCedula(cedula: String): Usuario? {
+        try {
+            return dao.obtenerUsuarioPorCedula(cedula)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
     // ----------------- Matrícula -----------------
 
-    override fun registrarMatricula(alumnoId: String, grupoId: Int) {
+    override fun registrarMatricula(grupoId: Int, cedulaAlumno: String) {
         try {
-            dao.registrarMatricula(alumnoId, grupoId)
-            println("Matrícula registrada correctamente")
+            dao.registrarMatricula(grupoId, cedulaAlumno)
         } catch (e: Exception) {
-            println("Error al registrar matrícula: ${e.message}")
+            throw e
         }
     }
 
-    override fun eliminarMatricula(alumnoId: String, grupoId: Int) {
+    override fun eliminarMatricula(grupoId: Int, cedulaAlumno: String) {
         try {
-            dao.eliminarMatricula(alumnoId, grupoId)
-            println("Matrícula eliminada correctamente")
+            dao.eliminarMatricula(grupoId, cedulaAlumno)
         } catch (e: Exception) {
-            println("Error al eliminar matrícula: ${e.message}")
+            throw e
         }
     }
 
     // ----------------- Registro de Notas -----------------
 
-    override fun registrarNota(grupoId: Int, alumnoId: String, nota: Double) {
+    override fun registrarNota(grupoId: Int, cedulaAlumno: String, nota: Int) {
         try {
-            dao.registrarNota(grupoId, alumnoId, nota)
-            println("Nota registrada correctamente")
+            dao.registrarNota(grupoId, cedulaAlumno, nota)
         } catch (e: Exception) {
-            println("Error al registrar nota: ${e.message}")
+            throw e
         }
     }
 
     // ----------------- Historial Académico -----------------
 
-    override fun consultarHistorial(alumnoId: String): ResultSet? {
-        return try {
-            dao.consultarHistorial(alumnoId)
+    override fun consultarHistorialAcademico(cedulaAlumno: String): Collection<Matricula> {
+        try {
+            return dao.consultarHistorialAcademico(cedulaAlumno)
         } catch (e: Exception) {
-            println("Error al consultar historial: ${e.message}")
-            null
+            throw e
         }
     }
 }

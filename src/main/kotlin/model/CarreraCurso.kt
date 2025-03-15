@@ -2,7 +2,7 @@ package org.example.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "CARRERA_CURSO")
+@Table(name = "CARRERA_CURSO", schema = "MOVILES")
 class CarreraCurso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +36,14 @@ class CarreraCurso {
     }
 
     // Getters y Setters
+    fun getCarreraCursoId(): Int {
+        return carreraCursoId
+    }
+
+    fun setCarreraCursoId(carreraCursoId: Int) {
+        this.carreraCursoId = carreraCursoId
+    }
+
     fun getCodigoCarrera(): String {
         return codigoCarrera
     }
@@ -75,27 +83,6 @@ class CarreraCurso {
     fun setOrden(orden: Int) {
         this.orden = orden
     }
-
-//    // Métodos adicionales
-//
-//    /**
-//     * Verifica si este curso pertenece a un año y ciclo específicos
-//     * @param anioConsulta El año a verificar
-//     * @param cicloConsulta El ciclo a verificar
-//     * @return true si coincide, false en caso contrario
-//     */
-//    fun perteneceAPeríodo(anioConsulta: Int, cicloConsulta: Int): Boolean {
-//        return this.anio == anioConsulta && this.ciclo == cicloConsulta
-//    }
-//
-//    /**
-//     * Valida que los datos de la relación carrera-curso sean correctos
-//     * @return true si los datos son válidos, false en caso contrario
-//     */
-//    fun validarDatos(): Boolean {
-//        return codigoCarrera.isNotEmpty() && codigoCurso.isNotEmpty() &&
-//                anio > 0 && (ciclo == 1 || ciclo == 2) && orden > 0
-//    }
 
     // toString
     override fun toString(): String {

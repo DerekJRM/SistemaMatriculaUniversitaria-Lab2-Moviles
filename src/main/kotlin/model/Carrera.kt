@@ -6,7 +6,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "CARRERA")
+@Table(name = "CARRERA", schema = "MOVILES")
 class Carrera {
     @Id
     @Column(name = "CODIGO_CARRERA", length = 20, nullable = false)
@@ -49,25 +49,6 @@ class Carrera {
 
     fun setTitulo(titulo: String) {
         this.titulo = titulo
-    }
-
-    // Métodos adicionales
-
-    /**
-     * Valida que los datos de la carrera sean correctos
-     * @return true si los datos son válidos, false en caso contrario
-     */
-    fun validarDatos(): Boolean {
-        return codigoCarrera.isNotEmpty() && nombre.isNotEmpty() && titulo.isNotEmpty()
-    }
-
-    /**
-     * Verifica si la carrera tiene un código específico
-     * @param codigo El código a verificar
-     * @return true si coincide, false en caso contrario
-     */
-    fun tieneCodigo(codigo: String): Boolean {
-        return this.codigoCarrera == codigo
     }
 
     // toString

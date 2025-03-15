@@ -3,7 +3,7 @@ package org.example.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "GRUPO")
+@Table(name = "GRUPO", schema = "MOVILES")
 class Grupo {
 
     @Id
@@ -101,45 +101,6 @@ class Grupo {
     fun setCedulaProfesor(cedulaProfesor: String) {
         this.cedulaProfesor = cedulaProfesor
     }
-
-//    // Métodos adicionales
-//
-//    /**
-//     * Genera un identificador único para el grupo
-//     * @return String con el identificador único
-//     */
-//    fun generarIdentificadorUnico(): String {
-//        return "$anioCiclo-$numeroCiclo-$codigoCurso-$numeroGrupo"
-//    }
-//
-//    /**
-//     * Verifica si el grupo es del período actual
-//     * @param anioActual El año actual
-//     * @param cicloActual El ciclo actual
-//     * @return true si es del período actual, false en caso contrario
-//     */
-//    fun esPeriodoActual(anioActual: Int, cicloActual: Int): Boolean {
-//        return this.anioCiclo == anioActual && this.numeroCiclo == cicloActual
-//    }
-//
-//    /**
-//     * Verifica si un profesor está asignado a este grupo
-//     * @param cedulaProfesorConsulta La cédula del profesor a verificar
-//     * @return true si está asignado, false en caso contrario
-//     */
-//    fun esImpartidoPor(cedulaProfesorConsulta: String): Boolean {
-//        return this.cedulaProfesor == cedulaProfesorConsulta
-//    }
-//
-//    /**
-//     * Valida que los datos del grupo sean correctos
-//     * @return true si los datos son válidos, false en caso contrario
-//     */
-//    fun validarDatos(): Boolean {
-//        return anioCiclo > 0 && (numeroCiclo == 1 || numeroCiclo == 2) &&
-//                codigoCurso.isNotEmpty() && numeroGrupo > 0 &&
-//                horario.isNotEmpty() && cedulaProfesor.isNotEmpty()
-//    }
 
     // toString
     override fun toString(): String {
