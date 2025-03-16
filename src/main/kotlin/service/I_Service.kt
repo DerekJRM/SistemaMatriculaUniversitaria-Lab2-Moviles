@@ -1,7 +1,11 @@
+/*
+    * @author: Derek Rojas Mendoza
+    * @author: Joseph León Cabezas
+*/
+
 package org.example.service
 
 import org.example.model.*
-import java.sql.ResultSet
 
 interface I_Service {
 

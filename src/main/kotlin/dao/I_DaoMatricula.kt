@@ -1,10 +1,11 @@
+/*
+    * @author: Derek Rojas Mendoza
+    * @author: Joseph León Cabezas
+*/
+
 package org.example.dao
 
-import org.example.exceptions.GlobalException
-import org.example.exceptions.NoDataException
 import org.example.model.*
-import java.sql.*
-import kotlin.jvm.Throws
 
 interface I_DaoMatricula {
 
